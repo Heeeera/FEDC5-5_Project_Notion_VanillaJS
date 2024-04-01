@@ -1,4 +1,4 @@
-import { textToHtml, textToHtmlWithTag } from "../../utils/transfer.js";
+import { textToHtml } from "../../utils/transfer.js";
 
 export default function ContentEditor({
   $target,
@@ -9,7 +9,7 @@ export default function ContentEditor({
   $contentContainer.className = "text-container";
 
   $contentContainer.innerHTML = `
-    <div class="input-content" contenteditable="true" data-text="내용을 입력하세요."></div>
+    <div class="input-content" contenteditable data-text="내용을 입력하세요."></div>
   `;
 
   this.state = initialState;
@@ -26,17 +26,9 @@ export default function ContentEditor({
 
   this.render();
 
-  // focus 됐을 때 원본 텍스트 불러오기
-  $contentContainer
-    .querySelector(".input-content")
-    .addEventListener("focus", (e) => {
-      e.target.innerHTML = textToHtmlWithTag(this.state.originalContent);
-    });
-
-  // 편집기 내용 입력
   $contentContainer
     .querySelector(".input-content")
     .addEventListener("input", (e) => {
-      onContentEditing(e.target.innerText);
+      onContentEditing(e.target.innerHTML);
     });
 }

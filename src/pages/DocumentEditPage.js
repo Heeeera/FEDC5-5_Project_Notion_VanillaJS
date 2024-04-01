@@ -1,4 +1,4 @@
-import Editor from "../components/Editor/Editor.js";
+import Editor from "../components/Editor/index.js";
 
 import { getItem, setItem, removeItem } from "../utils/storage.js";
 import { triggerURLChange } from "../utils/router.js";
@@ -41,7 +41,9 @@ export default function DocumentEditPage({ $target, initialState }) {
       }
 
       removeItem(documentLocalSaveKey + this.state.id);
-    }, 1500),
+
+      document.querySelector(".input-content").focus();
+    }, 500),
   });
 
   this.setState = async (nextState) => {
@@ -60,7 +62,6 @@ export default function DocumentEditPage({ $target, initialState }) {
         editor.setState({
           ...tempDocument,
           documents: this.state.document.documents,
-          originalContent: tempDocument.content,
         });
         this.state.document = tempDocument;
 
@@ -82,7 +83,6 @@ export default function DocumentEditPage({ $target, initialState }) {
         title: this.state.document.title,
         content: this.state.document.content,
         documents: this.state.document.documents,
-        originalContent: this.state.document.content,
       });
     }
 

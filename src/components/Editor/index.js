@@ -28,7 +28,6 @@ export default function Editor({ $target, initialState, onEditing }) {
     initialState: {
       title: this.state.title,
       content: this.state.content,
-      originalContent: this.state.content,
     },
     onContentEditing: (content) => {
       this.setState(
