@@ -5,8 +5,7 @@
 
 ## 📌 프로젝트 설명 <!-- 어떤 걸 만들었는지 대략적으로 설명해주세요 -->
 바닐라 JS로 자동 저장 편집기를 적용한 메모장을 만들었습니다.<br>
-[🔗배포 페이지](https://notion-clone-project-git-5-5-heeeera.vercel.app/)
-
+[🔗배포 페이지](https://heera-notion.vercel.app/)
 ## 👩‍💻 요구 사항과 구현 내용 <!-- 기능을 Commit 별로 잘개 쪼개고, Commit 별로 설명해주세요 -->
 ### 기본 요구사항
 - [x] 화면 좌측에 Root Documents를 불러오는 API를 통해 루트 Documents를 렌더링합니다.
