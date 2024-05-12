@@ -4,6 +4,7 @@ import DocumentEditPage from "./pages/DocumentEditPage.js";
 import { initRouter } from "./utils/router.js";
 import { request } from "./utils/api.js";
 import { validDocument, validDocumentsArray } from "./utils/validation.js";
+import Introduction from "./components/Introduction.js";
 
 export default function App({ $target }) {
   const documentListPage = new DocumentListPage({
@@ -21,6 +22,8 @@ export default function App({ $target }) {
     },
   });
 
+  const introduction = new Introduction({ $target });
+
   this.route = async () => {
     const documents = await request("/documents");
     try {
@@ -36,10 +39,16 @@ export default function App({ $target }) {
 
     const { pathname } = window.location;
 
-    // 루트 경로일 때 편집기가 보이지 않도록 설정
+    // 루트 경로일 때 소개글 렌더링
     if (pathname === "/" && $target.querySelector(".document-edit-page")) {
       $target.removeChild($target.querySelector(".document-edit-page"));
+      introduction;
+
       return;
+    }
+
+    if (pathname !== "/" && $target.querySelector(".introduction-container")) {
+      $target.removeChild($target.querySelector(".introduction-container"));
     }
 
     if (pathname.indexOf("/documents/") === 0) {

@@ -88,7 +88,7 @@ body {
 
 /* DocumentEditPage */
 
-.document-edit-page {
+.document-edit-page .introduction-container {
   display: flex;
   width: 80%;
   flex-direction: column;
